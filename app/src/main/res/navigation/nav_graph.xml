@@ -3,13 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/NewsFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/NewsFragment"
         android:name="com.srgnk.news.views.NewsFragment"
-        android:label="@string/app_name"
         tools:layout="@layout/fragment_news">
 
+        <action
+            android:id="@+id/action_NewsFragment_to_NewsDetailFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait_anim"
+            app:popEnterAnim="@anim/wait_anim"
+            app:popExitAnim="@anim/slide_right"
+            app:destination="@+id/NewsDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/NewsDetailFragment"
+        android:name="com.srgnk.news.views.NewsDetailFragment"
+        tools:layout="@layout/fragment_news_detail">
     </fragment>
 </navigation>
