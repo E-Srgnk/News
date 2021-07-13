@@ -11,5 +11,6 @@ data class GoogleNewsItem(
     val description: String,
     val urlToImage: String,
     val url: String,
+    val publishedAt: String,
     val content: String
 )
