@@ -36,6 +36,7 @@ class NewsViewModel @Inject constructor(private val api: NewsApi) : ViewModel() 
                 it.description,
                 it.urlToImage,
                 it.url,
+                it.publishedAt,
                 it.content
             )
         }
