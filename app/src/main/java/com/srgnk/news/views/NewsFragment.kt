@@ -7,9 +7,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.srgnk.news.NewsState
+import com.srgnk.news.R
 import com.srgnk.news.adapters.NewsAdapter
+import com.srgnk.news.commons.*
+import com.srgnk.news.commons.ITEM_TITLE
 import com.srgnk.news.data.GoogleNewsItem
 import com.srgnk.news.databinding.FragmentNewsBinding
 import com.srgnk.news.viewmodels.NewsViewModel
@@ -61,7 +65,18 @@ class NewsFragment : Fragment(), NewsAdapter.ItemClickListener {
     }
 
     override fun itemClicked(item: GoogleNewsItem) {
+        val bundle = Bundle().apply {
+            putString(ITEM_TITLE, item.title)
+            putString(ITEM_URL_TO_IMAGE, item.urlToImage)
+            putString(ITEM_URL, item.url)
+            putString(ITEM_PUBLISHED_AT, item.publishedAt)
+            putString(ITEM_CONTENT, item.content)
+        }
 
+        findNavController().navigate(
+            R.id.action_NewsFragment_to_NewsDetailFragment,
+            bundle
+        )
     }
 
     override fun onDestroyView() {
